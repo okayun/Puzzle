@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 class Program
 {
+
     [STAThread]
     public static void Main()
     {
@@ -37,7 +38,7 @@ class SlidePuzzle
 
         for (int i = 0; i < H; ++i)
         {
-            int lx = 0, ly = i * 111;
+            int lx = 0, ly = i * 100;
 
             for (int j = 0; j < W; ++j)
             {
@@ -52,16 +53,20 @@ class SlidePuzzle
                 else
                 {
                     // ここも
-                    pics[i, j].Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\1-" + (i + 1) + "-" + (j + 1) + ".png");
+                    //pics[i, j].Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\1-" + (i + 1) + "-" + (j + 1) + ".png");
+                    pics[i, j].Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\m" + i + "" + j + ".png");
+                    //String filename = ".\\img\\1-" + (i + 1) + "-" + (j + 1) + ".png";
+                    //pics[i, j].Image = Image.FromFile(filename);
                 }
 
                 pics[i, j].MouseClick += new MouseEventHandler(PicMove);
                 pics[i, j].Location = new Point(lx, ly);
-                pics[i, j].Size = new Size(111, 111);
+                pics[i, j].Size = new Size(100, 100);
                 lx += pics[i, j].Width;
                 pics[i, j].Parent = form;
             }
         }
+
         height = pics[0, 0].Height;
         width = pics[0, 0].Width;
 
@@ -116,7 +121,6 @@ class SlidePuzzle
         }
     }
 
-    // 結局使わなかった
     void Swap<T>(ref T a, ref T b)
     {
         T tmp = a;
