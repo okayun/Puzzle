@@ -16,6 +16,7 @@ class Program
         {
             new SlidePuzzle();
             new Conguraturation();
+            // 終わるかどうか聞くやつを実装したい
         }
     }
 }
@@ -57,16 +58,19 @@ class Conguraturation
 
         if (prob < 0.1)
         {
+            // ぬくもりィ！！！
             k = 500;
             image.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\graduate.png");
         }
         else if (0.1 < prob && prob < 0.4)
         {
+            // ぬくもりィ！！！
             k = 480;
             image.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\hanataba.png");
         }
         else
         {
+            // ぬくもりィ！！！
             k = 570;
             image.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\conguraturation.png");
         }
@@ -76,7 +80,6 @@ class Conguraturation
         image.Parent = form;
         image.Size = new Size(image.Image.Width, image.Image.Height);
         // ぬくもりィ！！！
-        form.Size = new Size(600, 700);
         image.Location = new Point((k - image.Image.Width), 0);
         form.Text = "おめでとう！！";
 
@@ -85,6 +88,8 @@ class Conguraturation
         // ぬくもりィ！！！
         answer.Location = new Point((585 - answer.Width) / 2, image.Image.Height);
 
+        // ぬくもりィ！！！
+        form.Size = new Size(600, image.Height + answer.Height + 39);
 
         form.ShowDialog();
     }
@@ -111,6 +116,7 @@ class SlidePuzzle
         form.Text = "Puzzle - FX で金を溶かした猫 -";
         form.KeyPreview = true;
 
+        // ぬくもりィ！！！
         H = W = 5;
 
         pics = new PictureBox[H, W];
@@ -156,7 +162,7 @@ class SlidePuzzle
         }
 
         // 盤面をシャッフル
-        //rndpics = shuffle(rndpics);
+        rndpics = shuffle(rndpics);
 
         // 解けない盤面なら 1 箇所 SWAP する
         if (!Check(rndpics))
