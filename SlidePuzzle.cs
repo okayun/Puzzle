@@ -12,6 +12,7 @@ class Program
     [STAThread]
     public static void Main()
     {
+        //Console.WriteLine(Application.ExecutablePath); // 相対パスを表示
         while (true)
         {
             new SlidePuzzle();
@@ -60,36 +61,37 @@ class Conguraturation
         {
             // ぬくもりィ！！！
             k = 500;
-            image.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\graduate.png");
+            image.Image = Image.FromFile(@"..\img\graduate.png");
         }
         else if (0.1 < prob && prob < 0.4)
         {
             // ぬくもりィ！！！
             k = 480;
-            image.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\hanataba.png");
+            image.Image = Image.FromFile(@"..\img\hanataba.png");
         }
         else
         {
             // ぬくもりィ！！！
             k = 570;
-            image.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\conguraturation.png");
+            image.Image = Image.FromFile(@"..\img\conguraturation.png");
         }
 
-        answer.Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\fx_cat.png");
+        answer.Image = Image.FromFile(@"..\img\cbaby.png");
 
-        image.Parent = form;
-        image.Size = new Size(image.Image.Width, image.Image.Height);
+        //image.Parent = form;
+        //image.Size = new Size(image.Image.Width, image.Image.Height);
         // ぬくもりィ！！！
-        image.Location = new Point((k - image.Image.Width), 0);
+        //image.Location = new Point((k - image.Image.Width), 0);
         form.Text = "おめでとう！！";
 
         answer.Parent = form;
-        answer.Size = new Size(answer.Image.Width, answer.Image.Height);
+        //answer.Size = new Size(answer.Image.Width, answer.Image.Height);
+        answer.Size = new Size(answer.Image.Height, answer.Image.Width);
         // ぬくもりィ！！！
-        answer.Location = new Point((585 - answer.Width) / 2, image.Image.Height);
-
+        //answer.Location = new Point((585 - answer.Width) / 2, image.Image.Height);
+        answer.Location = new Point(0, 0);
         // ぬくもりィ！！！
-        form.Size = new Size(600, image.Height + answer.Height + 39);
+        form.Size = new Size(answer.Width, answer.Height);
 
         form.ShowDialog();
     }
@@ -112,12 +114,12 @@ class SlidePuzzle
     {
         form = new Form();
         // ぬくもりィ！！！
-        form.Size = new Size(565, 589);
-        form.Text = "Puzzle - FX で金を溶かした猫 -";
+        form.Size = new Size(345, 370);
+        form.Text = "クリスマスの赤ちゃんのイラスト";
         form.KeyPreview = true;
 
         // ぬくもりィ！！！
-        H = W = 5;
+        H = W = 3;
 
         pics = new PictureBox[H, W];
         rndpics = new KeyValuePair<int, Image>[H * W - 1];
@@ -136,7 +138,7 @@ class SlidePuzzle
                 {
                     // ここ相対パスにしたいけどなんかエラー出る
                     /*pics[i, j].Image*/
-                    pics[i, j].Image = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\blank.png");
+                    pics[i, j].Image = Image.FromFile(@"..\img\blank.png");
                     pics[i, j].Text = idx.ToString();
                 }
                 else
@@ -146,7 +148,7 @@ class SlidePuzzle
                     /*pics[i, j].Image*/
                     //rndpics[idx].Value = Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\muramatsu_puzzle_" + (i + 1) + "_" + (j + 1) + ".png");
                     //rndpics[idx].Key = idx++;
-                    rndpics[idx] = new KeyValuePair<int, Image>(idx, Image.FromFile(@"C:\Users\yamaoka\source\repos\Puzzle\img\fx_cat_" + (i + 1) + "_" + (j + 1) + ".png"));
+                    rndpics[idx] = new KeyValuePair<int, Image>(idx, Image.FromFile(@"..\img\cbaby_" + (i + 1) + "_" + (j + 1) + ".png"));
                     idx++;
                     //String filename = ".\\img\\1-" + (i + 1) + "-" + (j + 1) + ".png";
                     //pics[i, j].Image = Image.FromFile(filename);
